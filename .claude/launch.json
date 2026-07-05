@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-output-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4173", "."],
+      "port": 4173
+    },
+    {
+      "name": "league-crm-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "league-crm", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

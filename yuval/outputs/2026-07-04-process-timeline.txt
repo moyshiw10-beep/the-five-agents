@@ -1,0 +1,17 @@
+תאריך: 2026-07-04
+
+הבקשה המקורית:
+צור תמונה עבור שקופית "תהליך העבודה מול הרשות" במצגת לרשויות. אינפוגרפיק ציר זמן (timeline) אופקי ונקי, המציג 6 שלבים בתהליך: פגישת היכרות, בדיקת היתכנות, ליווי משפטי, תכנון מותאם, הקמה (2-4 חודשים), מסירה והפעלה. סגנון גרפי-מוסדי, נקי ומינימליסטי, עם אייקונים פשוטים לכל שלב, פלטת צבעים כחול-אפור-לבן, טקסט בעברית, מתאים למצגת לרשויות ציבוריות.
+
+Prompt מלא (אנגלית) ששימש ליצירת התמונה:
+Clean, professional institutional infographic showing a horizontal process timeline with exactly 6 sequential steps for working with a municipal authority, connected by a clear directional line or arrow flowing left to right. Step 1: 'פגישת היכרות' (Introductory Meeting) with a simple handshake or meeting icon. Step 2: 'בדיקת היתכנות' (Feasibility Check) with a checklist or magnifying glass icon. Step 3: 'ליווי משפטי' (Legal Guidance) with a scales-of-justice or document icon. Step 4: 'תכנון מותאם' (Custom Planning) with a blueprint or ruler-and-pencil icon. Step 5: 'הקמה (2-4 חודשים)' (Construction, 2-4 months) with a crane or building-construction icon. Step 6: 'מסירה והפעלה' (Handover and Launch) with a key or ribbon-cutting icon. Each step represented as a circular or rounded node on the timeline, numbered 1 through 6, with a short icon above and Hebrew label text below or beside each node. Flat vector illustration style, minimalist and institutional, geometric shapes, thin clean lines, subtle soft shadows. Color palette: corporate blue-gray-white (navy and medium blue nodes, light gray connecting line, white background, dark gray text). Composition: single horizontal row, evenly spaced, centered on the page with generous white space above and below, high clarity and readability, suitable for a formal presentation slide to public authorities. All text in Hebrew, correctly spelled and legible.
+
+References ששימשו:
+נסרקה תיקיית yuval/reference/ — נמצא קובץ "תמונה שלי.jpeg" (תמונה אישית/צילום חוץ של המשתמש עם כלב), לא רלוונטי ויזואלית לבקשה. במקום זאת נשמר עקביות סגנונית מול אינפוגרפיקים קודמים שנוצרו בפרויקט (2026-07-04-structure-cross-section-infographic ו-2026-07-04-dual-revenue-model-infographic) — סגנון flat/וקטורי נקי, פלטת כחול-אפור-לבן, תוויות בעברית, מתאים למסמכים עסקיים/מוסדיים.
+
+הערה טכנית: נדרש עקיפה של תקלת encoding UTF-8 בעברית דרך curl+bash סטנדרטי בסביבת Windows — ה-payload נבנה כקובץ JSON נפרד באמצעות Node.js (לשמירת קידוד UTF-8 תקין), ונשלח עם curl --data-binary "@payload.json".
+
+מודל: gpt-image-2
+גודל: 1024x1024
+Quality: medium
+Output format: png

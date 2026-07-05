@@ -1,0 +1,17 @@
+Date: 2026-06-24
+
+Original Request:
+שילוב תמונת המשתמש עם הכלב לתוך תמונת חוף בוגרשוב שכבר נוצרה.
+
+Prompt Used:
+Place the person and dog from the second image naturally onto Bograshov Beach in Tel Aviv. They should appear as if standing or sitting on the sandy beach in the foreground, blending naturally with the beach scene's lighting and atmosphere.
+
+API Endpoint: POST https://api.openai.com/v1/images/edits
+Model: gpt-image-2
+Size: 1024x1024
+Quality: medium
+Output Format: png
+
+Reference Files Used:
+- yuval/outputs/2026-06-24-bograshov-beach-tel-aviv.png (background image)
+- yuval/reference/תמונה שלי.jpeg (user photo with dog)

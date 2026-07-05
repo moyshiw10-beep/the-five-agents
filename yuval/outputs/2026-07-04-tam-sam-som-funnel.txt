@@ -1,0 +1,15 @@
+תאריך: 2026-07-04
+
+הבקשה המקורית:
+צור תמונה עבור שקופית "גודל השוק" במצגת משקיעים — תרשים משפך (funnel) TAM-SAM-SOM: שלוש רמות בגדלים יורדים (עיגול/משולש גדול ל-TAM, בינוני ל-SAM, קטן ל-SOM), עיצוב מינימליסטי בגווני כחול (כחול כהה, בינוני, בהיר), עם תוויות טקסט בעברית "TAM", "SAM", "SOM" ותיאור קצר לכל רמה, רקע לבן, סגנון עסקי-פיננסי נקי.
+
+Prompt מלא (אנגלית) ששימש ליצירת התמונה:
+A modern flat-design business infographic illustrating a TAM-SAM-SOM market sizing funnel diagram, composed of three concentric or stacked shapes decreasing in size: a large outer circle or triangle layer representing TAM at the top, a medium-sized middle layer representing SAM, and a small inner layer representing SOM, arranged as a clear funnel or nested-circles composition narrowing from top (largest) to bottom/center (smallest). Each layer clearly labeled in Hebrew with the bold text 'TAM', 'SAM', and 'SOM' plus a short descriptive Hebrew caption beneath each label describing market size context. Modern flat vector illustration style, minimalist, clean geometric shapes, soft rounded edges, subtle flat shadows, no photorealism. Color palette in graduated blue tones: dark navy blue for the largest TAM layer, medium mid-tone blue for the SAM layer, light sky-blue for the smallest SOM layer, creating clear visual hierarchy through color intensity. Clean pure white background, generous white space. Centered, symmetrical, balanced composition suitable for an investor pitch deck slide. Corporate, professional, sharp, easy to read at a glance, high clarity typography. All text elements in Hebrew.
+
+References ששימשו:
+נסרקה תיקיית yuval/reference/ — נמצא קובץ "תמונה שלי.jpeg" (תמונה אישית/צילום חוץ של המשתמש עם כלב), שנמצא לא רלוונטי ויזואלית לאינפוגרפיקה עסקית. במקום זאת, נבדקה עקביות מול תוצרי אינפוגרפיקה קודמים בפרויקט (2026-07-04-dual-revenue-model-infographic, 2026-07-04-structure-cross-section-infographic) כדי לשמור על סגנון flat-design אחיד, פלטת כחולים, רקע לבן ותוויות עברית.
+
+מודל: gpt-image-2
+גודל: 1024x1024
+Quality: medium
+Format: PNG

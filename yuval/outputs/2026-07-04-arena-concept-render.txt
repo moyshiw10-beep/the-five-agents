@@ -1,0 +1,14 @@
+תאריך: 2026-07-04
+
+בקשה מקורית:
+תמונה עבור מסמך תוכנית עסקית — הדמיית קונספט אדריכלית של מגרש ספורט פתוח (כדורסל) שעבר קירוי בבנייה קלה — מבנה שלד קל עם מעטפת קירוי מודרנית, פתוח בצדדים או עם דפנות שקופות/פתוחות חלקית, אור טבעי נכנס, סלים תקניים ומסך לד בקצה המגרש. סגנון: הדמיה אדריכלית נקייה (rendering), תאורת יום, גוונים של אפור בהיר, לבן וכתום/כחול כצבעי מיתוג ספורטיביים. מצב רוח: מקצועי, אופטימי, טכנולוגי.
+
+Prompt סופי שנשלח ל-gpt-image-2:
+Clean architectural concept rendering of an open-air basketball court that has been covered by a modern lightweight steel-frame roof structure (light-gauge steel construction). The roof features slender curved steel trusses supporting a translucent membrane/panel roofing system, with the sides left largely open or enclosed only by transparent glass/mesh panels, allowing abundant natural daylight to flood the court. Regulation basketball hoops with backboards on both ends of the court, a large blank LED scoreboard screen mounted above one end. The court floor uses light grey and white tones with subtle orange and blue accent line markings. No text, no logos, no signage, no watermarks, no people, no crowd, no infographic panels or captions of any kind - purely a photorealistic 3D architectural visualization image with nothing overlaid on it. Style: minimalist professional architectural rendering, daytime natural sunlight, soft realistic shadows, clean sharp lines. Mood: professional, optimistic, modern, technological. Composition: wide-angle three-quarter perspective view showing the full court and roof structure, slightly low camera angle emphasizing the height and openness of the roof span, symmetrical balanced framing, ultra-clean presentation quality suitable for a business plan document.
+
+Reference שנבדקו:
+- yuval/reference/תמונה שלי.jpeg — נבדק, נמצא לא רלוונטי (תמונה אישית/סלפי עם כלב, ללא קשר לסגנון הדמיה אדריכלית). לא נעשה בו שימוש.
+- לא נמצאו קבצי reference נוספים בתיקייה.
+- הוחלט להיעזר בשיפוט עצמאי בהתאם להנחיות המשתמש בבקשה.
+
+הערה: נעשה ניסיון ראשון עם prompt כללי יותר, שהניב תוצאה בסגנון מצגת שיווקית עם לוגו וטקסט בדויים ("Next Level Performance") — לא מתאים למסמך תוכנית עסקית נקי. בוצע ניסיון שני עם prompt מדויק יותר שכלל הנחיה מפורשת למניעת טקסט/לוגו/מסגרות אינפוגרפיקה, והתוצאה השנייה היא זו שנשמרה כקובץ הסופי.

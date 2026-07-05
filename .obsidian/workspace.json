@@ -1,0 +1,208 @@
+{
+  "main": {
+    "id": "4feccf8f4b72380f",
+    "type": "split",
+    "children": [
+      {
+        "id": "76212f87008e6786",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90a6606e5b8e1d82",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "תצוגת גרף"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "76df4ce461098090",
+    "type": "split",
+    "children": [
+      {
+        "id": "dbadf6ff2c1f2367",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b2fb334988993192",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "סייר קבצים"
+            }
+          },
+          {
+            "id": "6a1e8ee4a70d840e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "לחפש"
+            }
+          },
+          {
+            "id": "683c15e5281ab077",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "סימניות"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a2501fe4a5c2088d",
+    "type": "split",
+    "children": [
+      {
+        "id": "da2b1afcc33c6a8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d35891f927692f83",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "קישורים נכנסים"
+            }
+          },
+          {
+            "id": "2e578a57a2eff34a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "קישורים יוצאים"
+            }
+          },
+          {
+            "id": "dda602e32feba25e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "תגים"
+            }
+          },
+          {
+            "id": "a8c29e4614a0fc84",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "כל המאפיינים"
+            }
+          },
+          {
+            "id": "e836ba4ddf85387d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "מתווה"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:פתח את המחליף המהיר": false,
+      "graph:פתח תצוגת גרף": false,
+      "canvas:צור קנבס חדש": false,
+      "daily-notes:פתח את ההערה של היום": false,
+      "templates:הכנס תבנית": false,
+      "command-palette:פתח את לוח הפקודות": false,
+      "bases:צור בסיס חדש": false
+    }
+  },
+  "active": "90a6606e5b8e1d82",
+  "lastOpenFiles": [
+    "vault/Content Briefs/basketball-arenas-israel.md",
+    "Output/basketball-arenas-israel.html.tmp.25172.880310227942",
+    "Output/basketball-arenas-israel.html.tmp.25172.944bb327f5ca",
+    "Output/basketball-arenas-israel.md.tmp.25172.f1219f5d51ab",
+    "Output/basketball-arenas-israel.md.tmp.25172.677202237be3",
+    "yuval/outputs/basketball-pais-arena.png",
+    "yuval/outputs/basketball-menora-arena.png",
+    "yuval/outputs/basketball-arenas-map.png",
+    "Output/basketball-arenas-israel.html",
+    "Output/basketball-arenas-israel.md",
+    "Content/basketball-arenas-israel.md",
+    "Content/basketball-arenas-israel.md.tmp.25172.220264228301",
+    "vault/Meeting Notes/_index.md.tmp.36324.dfb1e5783f78",
+    "vault/Meeting Notes/vault-initialization.md",
+    "vault/Publishing Log/cmr-article.md",
+    "vault/Brand Guidelines/yael-style-guide.md",
+    "vault/Meeting Notes/_index.md",
+    "vault/Meeting Notes/skills-setup.md",
+    "vault/Meeting Notes/agent-definitions.md",
+    "vault/Meeting Notes/reuven-team-architecture.md",
+    "vault/Content Briefs/_index.md",
+    "vault/Content Briefs",
+    "vault/Publishing Log/_index.md",
+    "vault/Publishing Log",
+    "vault/Brand Guidelines/_index.md",
+    "vault/Brand Guidelines"
+  ]
+}

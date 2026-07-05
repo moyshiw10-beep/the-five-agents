@@ -1,0 +1,14 @@
+Date: 2026-06-24
+
+Original Request:
+תמונה של חוף בוגרשוב בתל אביב
+
+Full Prompt (English):
+Bograshov Beach in Tel Aviv, Israel. Late afternoon golden hour light casting warm orange and amber hues across the Mediterranean Sea. Realistic photographic style. Composition using the rule of thirds: foreground with white sandy beach, beach umbrellas and sunbathers; midground with gentle waves and surfers; background with Tel Aviv Bauhaus-style white buildings along the promenade under a soft blue sky with scattered clouds. Vibrant yet warm color palette — turquoise water, golden sand, white architecture. Candid street photography feel, shallow depth of field, cinematic quality.
+
+Model: gpt-image-2
+Size: 1024x1024
+Quality: medium
+Output format: png
+
+References used: none (yuval/reference/ was empty)

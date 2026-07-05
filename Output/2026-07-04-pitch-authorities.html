@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מצגת לרשויות — קירוי מגרשי ספורט בבנייה קלה</title>
+<style>
+  :root {
+    --blue: #1a4d8f;
+    --blue-light: #4f8fd6;
+    --orange: #e8792f;
+    --gray: #f4f6f8;
+    --dark: #1a1a1a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #0d1b2a;
+    color: var(--dark); overflow: hidden;
+  }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide {
+    position: absolute; inset: 0; display: none; flex-direction: column;
+    justify-content: center; padding: 5vh 7vw; background: #fff;
+    background-size: cover; background-position: center;
+  }
+  .slide.active { display: flex; }
+  .slide h1 { font-size: 2.5rem; color: var(--blue); margin: 0 0 0.3em; }
+  .slide p.sub { font-size: 1.3rem; color: #444; max-width: 850px; }
+  .slide ul { font-size: 1.2rem; line-height: 1.7; padding-inline-start: 1.3em; max-width: 900px; }
+  .slide li { margin-bottom: 0.55em; }
+  .tag { display: inline-block; background: var(--gray); color: var(--blue); border-radius: 20px;
+    padding: 0.2em 0.9em; font-size: 0.85rem; font-weight: 600; margin-bottom: 1em; letter-spacing: 0.03em; }
+  .content-row { display: flex; gap: 3vw; align-items: center; height: 100%; }
+  .content-col { flex: 1.1; }
+  .image-col { flex: 1; display: flex; align-items: center; justify-content: center; }
+  .image-col img { max-width: 100%; max-height: 62vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+  table.deck-table { border-collapse: collapse; width: 100%; max-width: 900px; margin-top: 1em; font-size: 1.05rem; }
+  table.deck-table th, table.deck-table td { border: 1px solid #ddd; padding: 0.6em 0.9em; text-align: right; }
+  table.deck-table th { background: var(--blue); color: #fff; }
+  table.deck-table tr:nth-child(even) { background: var(--gray); }
+  .track-box { background: var(--gray); border-radius: 10px; padding: 1.1em 1.4em; margin-bottom: 1em; max-width: 900px; }
+  .track-box h3 { margin: 0 0 0.4em; color: var(--orange); font-size: 1.15rem; }
+  .track-box ul { margin: 0; font-size: 1.05rem; }
+  .cover {
+    color: #fff; justify-content: flex-end; position: relative;
+  }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,42,0.92), rgba(13,27,42,0.3));
+  }
+  .cover > * { position: relative; z-index: 1; }
+  .cover h1 { color: #fff; font-size: 3rem; }
+  .cover p.sub { color: #dce6f0; }
+  .final-cta {
+    background: var(--blue); color: #fff; align-items: center; text-align: center;
+  }
+  .final-cta h1 { color: #fff; }
+  .final-cta ul { list-style: none; padding: 0; font-size: 1.35rem; margin: 0 auto; }
+  .nav {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.55); padding: 8px 16px;
+    border-radius: 30px; z-index: 10; color: #fff; font-size: 0.9rem;
+  }
+  .nav button {
+    background: var(--orange); border: none; color: #fff; width: 34px; height: 34px; border-radius: 50%;
+    cursor: pointer; font-size: 1rem;
+  }
+  .nav button:hover { background: var(--blue-light); }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide active cover" style="background-image: url('../yuval/outputs/2026-07-04-arena-concept-render.png');">
+    <span class="tag" style="background:rgba(255,255,255,0.15); color:#fff;">רשויות מקומיות · מועצות אזוריות · בתי ספר · מתנ"סים</span>
+    <h1>מגרש שיש לכם כבר — אולם ספורט שעוד אין לכם</h1>
+    <p class="sub">הופכים מגרש ספורט פתוח וקיים לאולם תקני, מקורה ופעיל כל השנה — תוך חודשים, לא שנים.</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">01 · הבעיה שאתם מכירים היטב</span>
+    <h1>המחסור באולמות ספורט הוא לא חדש — והוא לא נפתר</h1>
+    <ul>
+      <li>כ-66% מבתי הספר בישראל (כ-3,500 מתוך כ-5,300) פועלים ללא אולם ספורט תקני — לפי דו"ח מבקר המדינה</li>
+      <li>הצורך הכולל במתקני ספורט בישראל מוערך ב-14.9 מיליארד ש"ח, מול תקציב ממשלתי זמין של 2.89 מיליארד ש"ח בלבד עד 2031</li>
+      <li>גם כשיש תקציב מאושר — התור ארוך, והזמן עד לקבלת אולם בנוי נמדד בשנים</li>
+      <li>הפער פוגע בעיקר באוכלוסיות שכבר סובלות ממחסור בנגישות — פריפריה, אשכולות סוציו-אקונומיים נמוכים, ובפרט בנות וקבוצות נשים</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">02 · ההזדמנות שכבר יש לכם</span>
+    <h1>התשתית כבר קיימת — היא רק לא מנוצלת</h1>
+    <ul>
+      <li>ברוב בתי הספר, הספורטקים והמתנ"סים כבר קיים מגרש ספורט פתוח, לעיתים גם עם תאורה וגידור</li>
+      <li>המגרש עומד ריק חלק ניכר משעות היממה והשנה — בגלל חום, קור, גשם או רוח</li>
+      <li>אין צורך בקרקע חדשה, בתכנון אדריכלי מאפס או בתהליך רישוי מלא של מבנה ציבורי חדש</li>
+      <li>הפתרון: להוסיף "שכבה" על מה שכבר קיים — ולא לבנות הכול מחדש</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">03 · הפתרון בקצרה</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>מה כולל הקירוי</h1>
+        <ul>
+          <li><b>מעטפת קירוי</b> בבנייה קלה — שלד נושא וציפוי חיצוני עמיד</li>
+          <li><b>פרקט ספורט תקני</b>, מתאים לכדורסל, כדוריד, כדורעף וכדורשת/פוטסל</li>
+          <li><b>מיזוג אוויר מלא</b> לפעילות נוחה בכל עונות השנה</li>
+          <li><b>ציוד תקני:</b> סלי כדורסל, שעוני משחק דיגיטליים, מסך לד</li>
+          <li><b>שירותים וחדרי הלבשה</b> — התשתית הנדרשת לאולם ספורט מלא</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-structure-cross-section-infographic.png" alt="חתך טכני של מבנה הקירוי"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">04 · עלות וזמן</span>
+    <h1>אותו אולם, שבריר מהעלות והזמן</h1>
+    <table class="deck-table">
+      <tr><th>פרמטר</th><th>קירוי בבנייה קלה</th><th>אולם ספורט קונבנציונלי</th></tr>
+      <tr><td>עלות הקמה</td><td>1.5-2 מיליון ש"ח</td><td>5-6 מיליון ש"ח בממוצע; עד 8-15 מיליון בפרויקטים מיוחדים</td></tr>
+      <tr><td>זמן הקמה</td><td>2-4 חודשים</td><td>2-3 שנים</td></tr>
+      <tr><td>תלות בקרקע</td><td>מנצל מגרש קיים</td><td>דורש תכנון ובנייה מאפס</td></tr>
+    </table>
+    <p class="sub" style="margin-top:1em;">כ-15-25% מעלות אולם קונבנציונלי בלבד, ופי 6-15 מהיר יותר.</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">05 · תקינה ובטיחות</span>
+    <h1>בנייה לפי הכללים, לא בעקיפתם</h1>
+    <ul>
+      <li>עמידה בת"י 5515 — התקן הישראלי לבטיחות מתקני ספורט (סלים, שערים, טבעות, ציוד כדוריד/כדורעף, מחיצות)</li>
+      <li>שימוש ברכיבים העוברים בדיקה ואישור תקן, לרבות בדיקה שנתית של מכון התקנים</li>
+      <li>כל פרויקט מלווה בבדיקה משפטית פרטנית מול הרשויות הרלוונטיות — עמידה מלאה בדרישות היתר בנייה ורישוי עסק</li>
+      <li>גישה מבוססת על שיטות בנייה קלה מוכחות בתחום, המיושמות כבר במאות פרויקטים ציבוריים בישראל</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">06 · מסלולי התקשרות</span>
+    <h1>גמישות במודל ההתקשרות — לפי הצרכים והתקציב שלכם</h1>
+    <div class="track-box">
+      <h3>מסלול א׳ — רכישה מלאה על ידי הרשות/המוסד</h3>
+      <ul>
+        <li>הרשות מזמינה ורוכשת את הפתרון במלואו; הבעלות עליו — של הרשות/המוסד, מהיום הראשון</li>
+        <li>מתאים לגופים עם תקציב ייעודי (עצמי או בתמיכת מפעל הפיס/קרן הטוטו)</li>
+      </ul>
+    </div>
+    <div class="track-box">
+      <h3>מסלול ב׳ — מודל שיתופי</h3>
+      <ul>
+        <li>החברה משקיעה בהקמת המתקן, מפעילה ומתחזקת אותו</li>
+        <li>הרשות/המוסד נהנים משימוש בתנאים מוסכמים מראש — מפחית משמעותית את הנטל התקציבי המיידי</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">07 · תהליך העבודה</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>מפנייה ראשונית ועד מסירת מפתח</h1>
+        <ul>
+          <li><b>פגישת היכרות וסיור באתר</b> — הכרת המגרש הקיים והצרכים</li>
+          <li><b>בדיקת היתכנות ובחירת מסלול</b> — רכישה מלאה או מודל שיתופי</li>
+          <li><b>ליווי משפטי ורגולטורי</b> — בדיקת דרישות היתר בנייה ורישוי עסק</li>
+          <li><b>תכנון מותאם</b> — התאמת מפרט הקירוי, הציוד וענפי הספורט</li>
+          <li><b>הקמה</b> — 2-4 חודשי עבודה בפועל</li>
+          <li><b>מסירה והפעלה</b> — הדרכה, תחזוקה שוטפת ותמיכה</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-process-timeline.png" alt="ציר זמן תהליך"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">08 · תועלת קהילתית</span>
+    <h1>אולם אחד, ענף ספורט אחר בכל שעה</h1>
+    <ul>
+      <li>פעילות ספורט מגוונת בכל השנה: כדורסל, כדוריד, כדורעף, כדורשת/פוטסל והתעמלות</li>
+      <li>שימוש כפול: שעות לימודים לבית הספר, שעות פנאי לקהילה — חוגים, ליגות עממיות, קבוצות נשים וילדות</li>
+      <li>מענה ישיר לפער הנגישות הקיים היום בפריפריה וביישובים עם מחסור במתקני ספורט</li>
+      <li>מרחב נוסף לאירועי קהילה, טקסים וכנסים — לא רק ספורט</li>
+    </ul>
+  </section>
+
+  <section class="slide final-cta">
+    <h1>בואו נראה איך זה נראה אצלכם</h1>
+    <ul>
+      <li>פגישת היכרות קצרה, ללא התחייבות</li>
+      <li>סיור באתר וניתוח ראשוני של המגרש הקיים אצלכם</li>
+      <li>הצעת מסלול מותאמת — רכישה מלאה או מודל שיתופי</li>
+    </ul>
+    <p style="font-size:1.5rem; margin-top:1em;"><b>ליצירת קשר: [פרטי התקשרות של החברה]</b></p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(-1)">▶</button>
+  <span id="counter">1 / 10</span>
+  <button onclick="go(1)">◀</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    document.getElementById('counter').textContent = (idx + 1) + ' / ' + slides.length;
+  }
+  function go(delta) {
+    idx = Math.min(Math.max(idx + delta, 0), slides.length - 1);
+    render();
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') go(1);
+    if (e.key === 'ArrowRight') go(-1);
+  });
+  render();
+</script>
+</body>
+</html>

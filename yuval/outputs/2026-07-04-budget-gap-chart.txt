@@ -1,0 +1,15 @@
+תאריך: 2026-07-04
+
+הבקשה המקורית:
+צור תמונה עבור שקופית "הבעיה" במצגת משקיעים. גרף עמודות פשוט וברור המשווה שני נתונים: "צורך כולל: 14.9 מיליארד ש"ח" מול "תקציב זמין: 2.89 מיליארד ש"ח". סגנון אינפוגרפיק פיננסי נקי, עמודה גבוהה בגוון אדום/כתום לצורך הכולל ועמודה נמוכה בגוון כחול לתקציב הזמין, טקסט בעברית, רקע לבן, מתאים למצגת משקיעים מקצועית.
+
+Prompt מלא (אנגלית) ששימש ליצירת התמונה:
+A clean, professional financial infographic bar chart for an investor presentation, comparing two values in a business plan document. Two vertical bars side by side on a plain white background. The left bar is tall, colored in a bold red-to-orange gradient, labeled above in Hebrew text: total need 14.9 billion NIS. The right bar is much shorter, colored in a solid professional blue, labeled above in Hebrew text: available budget 2.89 billion NIS. Both bars have flat color fills with subtle soft drop shadows, rounded top corners, modern flat-design vector illustration style, minimalist geometric shapes. A thin horizontal baseline axis under the bars. Clear value labels near the top of each bar. Composition centered and balanced, generous white space, high clarity and readability, corporate and professional mood emphasizing a large funding gap, suitable for a business plan or investor pitch deck slide titled the problem. All text elements in Hebrew, clean sans-serif typography.
+
+References ששימשו:
+נסרקה תיקיית yuval/reference/ — נמצא קובץ "תמונה שלי.jpeg" (תמונה אישית/צילום חוץ של המשתמש עם כלב), שנמצא לא רלוונטי ויזואלית לבקשה (פורטרט מול אינפוגרפיק פיננסי) ולכן לא שימש לסגנון. לשמירה על עקביות ויזואלית עם שאר האינפוגרפיקות של מצגת המשקיעים, נבחנו התוצרים הקודמים yuval/outputs/2026-07-04-dual-revenue-model-infographic.txt ו-yuval/outputs/2026-07-04-structure-cross-section-infographic.txt (סגנון flat design, רקע לבן, טקסט בעברית, פלטת כחול כניגוד לצבע חם) והותאם הסגנון בהתאם.
+
+מודל: gpt-image-2
+גודל: 1024x1024
+Quality: medium
+Format: PNG

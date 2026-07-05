@@ -1,0 +1,26 @@
+תאריך: 2026-07-04
+
+בקשה מקורית:
+צור תמונה עבור שקופית שער במצגת משקיעים. לוגו מוצע לחברה בתחום קירוי מגרשי ספורט בבנייה קלה,
+בסגנון מודרני וספורטיבי — צירוף של סמל מגרש/סל כדורסל עם קו קירוי מעל, גוונים כחול-כתום או
+כחול-ירוק, רקע לבן, סגנון וקטורי נקי ומינימליסטי המתאים ללוגו עסקי (לא איור ריאליסטי).
+
+Prompt מלא (אנגלית):
+Modern minimalist vector logo concept for a business specializing in lightweight steel-frame
+roofing structures for sports courts (basketball arenas). The logo icon combines a stylized
+basketball court / hoop-and-ball symbol with a clean curved roofline arc above it, suggesting
+covered/roofed sports facilities. Flat vector design, geometric and sporty, clean bold lines
+suitable for a scalable business logo (not a realistic illustration, not a photo, no text or
+wordmark, icon only). Color palette: blue and orange gradient tones (alternative: blue and
+green), high contrast, energetic and professional. Background: pure white, plain, no shadows
+or texture. Composition: icon centered, symmetrical, balanced negative space, presentation-ready
+for an investor pitch deck title slide.
+
+Reference שנסרקו:
+- yuval/reference/.gitkeep (ריק, ללא תוכן שימושי)
+- yuval/reference/תמונה שלי.jpeg (תמונה אישית של המשתמש — לא רלוונטית לסגנון לוגו וקטורי,
+  לא נעשה בה שימוש)
+לא נמצאו קבצי reference סגנוניים רלוונטיים — הפרומפט נבנה בשיפוט עצמאי בהתאם לדרישות הבקשה.
+
+מודל: gpt-image-2
+גודל: 1024x1024, quality: medium, format: png

@@ -1,0 +1,14 @@
+Date: 2026-07-04
+
+Original Request:
+צור תמונה עבור מסמך תוכנית עסקית — אינפוגרפיק המציג את שני זרמי ההכנסה של המודל העסקי: מצד אחד "מכירה והקמה ללקוחות" (אייקון בניין ציבורי/עירייה), מצד שני "בעלות והשכרה" (אייקון קהל משתמשים/לוח זמנים). סגנון: מודרני, flat design, פלטת צבעים כחול וכתום, טקסט בעברית.
+
+Full Prompt (English):
+A modern flat-design infographic illustrating a dual revenue model business diagram, in a funnel or flowchart layout, split into two clear branches. Left branch labeled in Hebrew 'מכירה והקמה ללקוחות' (Sale and Setup for Clients) featuring a simple flat icon of a public building or municipal town-hall structure with columns and a flag. Right branch labeled in Hebrew 'בעלות והשכרה' (Ownership and Rental) featuring a flat icon of a group of people or audience alongside a calendar/booking schedule icon. Both branches converge from or diverge into a central node representing the core business concept, connected with clean directional arrows or flowing lines. Modern flat design style, minimalist vector illustration, geometric shapes, soft rounded corners, subtle drop shadows. Color palette dominated by professional blue tones (navy, sky blue) paired with vibrant orange and amber accents for contrast and energy. Clean white or very light background. Balanced symmetrical composition, centered layout suitable for a business plan document. Corporate, professional, clear, and easy to read at a glance. All text elements in Hebrew.
+
+Model: gpt-image-2
+Size: 1024x1024
+Quality: medium
+Output format: png
+
+References used: none (yuval/reference/ contained only a personal photo "תמונה שלי.jpeg", not relevant to this business infographic style — proceeded with independent flat-design judgment).

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מצגת משקיעים — קירוי מגרשי ספורט בבנייה קלה</title>
+<style>
+  :root {
+    --blue: #1a4d8f;
+    --blue-light: #4f8fd6;
+    --orange: #e8792f;
+    --gray: #f4f6f8;
+    --dark: #1a1a1a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #0d1b2a;
+    color: var(--dark); overflow: hidden;
+  }
+  .deck { width: 100vw; height: 100vh; position: relative; }
+  .slide {
+    position: absolute; inset: 0; display: none; flex-direction: column;
+    justify-content: center; padding: 5vh 7vw; background: #fff;
+    background-size: cover; background-position: center;
+  }
+  .slide.active { display: flex; }
+  .slide h1 { font-size: 2.6rem; color: var(--blue); margin: 0 0 0.3em; }
+  .slide h2 { font-size: 1.6rem; color: var(--orange); margin: 0 0 0.8em; font-weight: 600; }
+  .slide ul { font-size: 1.25rem; line-height: 1.7; padding-inline-start: 1.3em; max-width: 900px; }
+  .slide li { margin-bottom: 0.5em; }
+  .slide p.sub { font-size: 1.3rem; color: #444; max-width: 800px; }
+  .tag { display: inline-block; background: var(--gray); color: var(--blue); border-radius: 20px;
+    padding: 0.2em 0.9em; font-size: 0.85rem; font-weight: 600; margin-bottom: 1em; letter-spacing: 0.03em; }
+  .content-row { display: flex; gap: 3vw; align-items: center; height: 100%; }
+  .content-col { flex: 1.1; }
+  .image-col { flex: 1; display: flex; align-items: center; justify-content: center; }
+  .image-col img { max-width: 100%; max-height: 62vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+  table.deck-table { border-collapse: collapse; width: 100%; max-width: 900px; margin-top: 1em; font-size: 1.05rem; }
+  table.deck-table th, table.deck-table td { border: 1px solid #ddd; padding: 0.6em 0.9em; text-align: right; }
+  table.deck-table th { background: var(--blue); color: #fff; }
+  table.deck-table tr:nth-child(even) { background: var(--gray); }
+  .note { font-style: italic; color: #666; font-size: 1rem; max-width: 800px; margin-top: 0.6em; }
+  .placeholder-box {
+    max-width: 100%; max-height: 62vh; aspect-ratio: 1/1; background: var(--gray); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.95rem;
+    text-align: center; padding: 2em; border: 2px dashed #ccc;
+  }
+  .cover {
+    color: #fff; justify-content: flex-end; position: relative;
+  }
+  .cover::before {
+    content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,42,0.92), rgba(13,27,42,0.35));
+  }
+  .cover > * { position: relative; z-index: 1; }
+  .cover h1 { color: #fff; font-size: 3.2rem; }
+  .cover p.sub { color: #dce6f0; }
+  .cover .logo-corner { position: absolute; top: 5vh; left: 7vw; width: 90px; height: 90px; z-index: 1; }
+  .cover .logo-corner img { width: 100%; height: 100%; object-fit: contain; background: #fff; border-radius: 10px; padding: 6px; }
+  .final-cta {
+    background: var(--blue); color: #fff; align-items: center; text-align: center;
+  }
+  .final-cta h1 { color: #fff; }
+  .final-cta ul { list-style: none; padding: 0; font-size: 1.4rem; margin: 0 auto; }
+  .nav {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; align-items: center; background: rgba(0,0,0,0.55); padding: 8px 16px;
+    border-radius: 30px; z-index: 10; color: #fff; font-size: 0.9rem;
+  }
+  .nav button {
+    background: var(--orange); border: none; color: #fff; width: 34px; height: 34px; border-radius: 50%;
+    cursor: pointer; font-size: 1rem;
+  }
+  .nav button:hover { background: var(--blue-light); }
+  .kicker { color: var(--blue-light); font-weight: 600; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide active cover" style="background-image: url('../yuval/outputs/2026-07-04-arena-concept-render.png');">
+    <div class="logo-corner"><img src="../yuval/outputs/2026-07-04-company-logo-concept.png" alt="לוגו החברה"></div>
+    <span class="tag">מצגת משקיעים</span>
+    <h1>[שם החברה]<br><span style="font-size:1.6rem; color:#dce6f0;">(הצעה זמנית: ClearCourt — ניתן להחליף)</span></h1>
+    <p class="sub">הופכים מגרש פתוח לאולם ספורט תקני — ב-2-4 חודשים, בשבריר מהעלות.</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">01 · הבעיה</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>משבר מתקני הספורט בישראל</h1>
+        <ul>
+          <li><b>66% מבתי הספר בישראל</b> (כ-3,500 מתוך כ-5,300) פועלים <b>ללא אולם ספורט תקני</b></li>
+          <li>הקרקע כבר מיועדת ומסומנת ברוב המקרים — האולם פשוט לא נבנה, בעיקר בגלל עלות וזמן</li>
+          <li><b>פער תקציבי של 14.9 מיליארד ש"ח</b> בין הצורך הכולל לתקציב המדינה הזמין (2.89 מיליארד ש"ח בלבד עד 2031)</li>
+          <li>פערים גיאוגרפיים וחברתיים-כלכליים חריפים — פריפריה, מגזרים חרדי וערבי, ונשים/ילדות נפגעות במיוחד</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-budget-gap-chart.png" alt="גרף פער תקציבי"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">02 · ההזדמנות</span>
+    <h1>תשתית קיימת, פתרון מהיר</h1>
+    <ul>
+      <li>אלפי מגרשי ספורט פתוחים כבר קיימים — בבתי ספר, ספורטקים, מתנ"סים ומקומות עבודה</li>
+      <li>הם עומדים <b>ריקים רוב שעות היממה והשנה</b> בגלל חשיפה למזג אוויר (חום, קור, גשם, רוח)</li>
+      <li>התשתית הבסיסית (משטח מגרש, לעיתים תאורה) — <b>כבר שם</b></li>
+      <li>כל שחסר הוא קירוי שיהפוך אותם לשמישים כל השנה, בכל שעה — בלי לבנות מאפס</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">03 · הפתרון</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>קירוי בבנייה קלה — אולם ספורט מלא, על גבי מגרש קיים</h1>
+        <ul>
+          <li>מעטפת קירוי מחומרים מובילים בבנייה קלה (שלד נושא + ציפוי חיצוני עמיד)</li>
+          <li>פרקט ספורט תקני, מיזוג אוויר מלא, שעוני משחק דיגיטליים</li>
+          <li>סלי כדורסל תקניים (מתאימים גם לכדוריד/כדורעף), מסך לד, שירותים וחדרי הלבשה</li>
+          <li>מתאים לכדורסל, כדורעף, כדוריד, כדורשת/פוטסל, התעמלות — וגם לאירועים קהילתיים</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-structure-cross-section-infographic.png" alt="חתך טכני של מבנה הקירוי"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">04 · איך זה עובד</span>
+    <h1>מתשתית ריקה לאולם פעיל — בתהליך פשוט</h1>
+    <ul>
+      <li><b>זיהוי מגרש</b> — איתור מגרש פתוח קיים מתאים (בי"ס, ספורטק, מתנ"ס, שטח חברה)</li>
+      <li><b>הסכם</b> — סגירת תנאי שימוש/בעלות מול הרשות או המוסד</li>
+      <li><b>הקמה</b> — קירוי מלא, פרקט, מיזוג ומערכות — <b>2-4 חודשים בלבד</b></li>
+      <li><b>הפעלה</b> — מסירה ללקוח ו/או הפעלה שוטפת להשכרה לקהל הרחב</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">05 · גודל השוק</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>שוק כתובת בישראל</h1>
+        <p class="note">הערה: הנתונים הבאים הם הערכה ראשונית בלבד, המבוססת על נתוני מבקר המדינה וסקירת שוק.</p>
+        <ul>
+          <li><b>TAM</b> (הצורך הכולל במתקני ספורט בישראל): כ-14.9 מיליארד ש"ח</li>
+          <li><b>SAM</b> (בתי ספר ללא אולם ספורט, עם מגרש קיים): כ-3,500 מוסדות חינוך</li>
+          <li><b>SOM</b> (יעד ריאלי לשנים הראשונות): עשרות עד מאות אתרים בפיילוט והרחבה ראשונית</li>
+          <li>מעבר לבתי ספר — פוטנציאל נוסף בספורטקים, מתנ"סים ומגזר עסקי</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-tam-sam-som-funnel.png" alt="משפך TAM SAM SOM"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">06 · המודל העסקי</span>
+    <div class="content-row">
+      <div class="content-col">
+        <h1>שני זרמי הכנסה משלימים</h1>
+        <ul>
+          <li><b>מכירה/הקמה (B2B/B2G):</b> פרויקט "מפתח בכף היד" לרשויות, מוסדות חינוך וחברות — הכנסה ישירה ומיידית</li>
+          <li><b>בעלות והשכרה שוטפת (B2C):</b> השקעה עצמית, בעלות/זכות הפעלה, והשכרה שוטפת — הכנסה חוזרת (recurring revenue)</li>
+          <li><b>השראה מהשוק:</b> מודל דומה הוכיח עצמו בענף הפאדל — 200+ אתרים, צמיחה 50%+ בשנה, 240-300 ש"ח לשעת מגרש</li>
+          <li><b>הבדל מרכזי:</b> מבוסס על קרקע ציבורית קיימת — משקיע ראשוני נמוך יותר</li>
+        </ul>
+      </div>
+      <div class="image-col"><img src="../yuval/outputs/2026-07-04-dual-revenue-model-infographic.png" alt="מודל הכנסות כפול"></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">07 · יתרון תחרותי</span>
+    <h1>פי 4-8 זול יותר, פי 6-15 מהיר יותר</h1>
+    <table class="deck-table">
+      <tr><th>פרמטר</th><th>הפתרון המוצע</th><th>אולם קונבנציונלי</th></tr>
+      <tr><td>עלות הקמה</td><td>1.5-2 מיליון ש"ח</td><td>5-15 מיליון ש"ח</td></tr>
+      <tr><td>זמן הקמה</td><td>2-4 חודשים</td><td>2-3 שנים</td></tr>
+      <tr><td>תלות בקרקע</td><td>מנצל מגרש קיים</td><td>דורש בנייה מאפס</td></tr>
+      <tr><td>מורכבות רגולטורית</td><td>נמוכה יחסית (בבדיקה משפטית)</td><td>גבוהה — תב"ע והיתרים מלאים</td></tr>
+    </table>
+    <p class="sub" style="margin-top:1em;">כ-15-25% מעלות אולם קונבנציונלי בלבד — אטרקטיבי במיוחד לרשויות עם תקציב מוגבל ולחץ ציבורי לפתרון מהיר.</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">08 · נוף תחרותי</span>
+    <h1>שוק פרוץ, ללא שחקן דומיננטי במודל המוצע</h1>
+    <ul>
+      <li>שחקנים קיימים בתחום הבנייה הקלה לאולמות ספורט פועלים בעיקר <b>במודל קבלני חד-פעמי (EPC/turn-key)</b> — ללא הכנסה חוזרת מבעלות/השכרה</li>
+      <li>גם ספקים בינלאומיים מובילים (ממברנה מתוחה, כיפות, מבנים מודולריים) פועלים באותה שיטה</li>
+      <li><b>הפער בשוק (White Space):</b> לא אותר מתחרה שמשלב הקמה + בעלות + הפעלה שוטפת על תשתית קיימת</li>
+      <li>זו נקודת הבידול המרכזית: לא רק קבלן מבצע — גם מפעיל ובעל נכס</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">09 · Roadmap</span>
+    <h1>ארבעה שלבים לצמיחה</h1>
+    <ul>
+      <li><b>בדיקת היתכנות (0-3 חודשים):</b> ייעוץ משפטי רגולטורי, מיפוי מגרשים, הצעות מחיר מספקים</li>
+      <li><b>הקמה ופיילוט (3-9 חודשים):</b> רישום החברה, זיהוי 1-3 אתרי פיילוט, תיעוד תוצאות</li>
+      <li><b>הרחבה ומיצוב שוק (9-24 חודשים):</b> שכפול המודל, בניית מותג, הרחבת זרוע ההשכרה</li>
+      <li><b>בגרות והתרחבות (מעבר לשנתיים):</b> שווקים בינלאומיים, רישום פטנט, מודלים עסקיים נוספים</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">10 · כלכלת אתר בודד</span>
+    <h1>Unit Economics — מסגרת ראשונית</h1>
+    <p class="note">הנתונים הבאים הערכה ראשונית בלבד — לגיבוש מול ספקים, קבלנים ולקוחות בפועל.</p>
+    <ul>
+      <li><b>השקעת הקמה לאתר:</b> 1.5-2 מיליון ש"ח</li>
+      <li><b>הכנסה ממכירה/הקמה:</b> עלות הקמה + שולי רווח קבלניים (כ-15%-30%)</li>
+      <li><b>הכנסה מהשכרה שוטפת:</b> בהשראת מודל הפאדל (240-300 ש"ח לשעת מגרש), לקהל רחב יותר</li>
+      <li><b>עלויות תפעול לתכנון:</b> חשמל, מיזוג, ניקיון, ביטוח, תחזוקה</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <span class="tag">11 · הצוות והבקשה</span>
+    <h1>הצוות שלנו | מה אנחנו מבקשים</h1>
+    <ul>
+      <li><b>הצוות:</b> <span style="color:#999;">[להשלים — שמות, תפקידים, רקע רלוונטי של המייסדים]</span></li>
+      <li><b>סכום הגיוס המבוקש:</b> <span style="color:#999;">[placeholder — לסכם]</span></li>
+      <li><b>שימוש בכספים:</b> <span style="color:#999;">[פיילוט ראשון, ייעוץ משפטי, גיוס צוות, שיווק]</span></li>
+      <li><b>מה המשקיעים מקבלים:</b> <span style="color:#999;">[תנאי השקעה, שווי, אחוזי בעלות]</span></li>
+    </ul>
+  </section>
+
+  <section class="slide final-cta">
+    <h1>הזדמנות להוביל שוק חדש</h1>
+    <ul>
+      <li>שוק ענק וגדל: פער של 14.9 מיליארד ש"ח במתקני ספורט בישראל בלבד</li>
+      <li>פתרון מהיר ב-6-15 פעמים וזול ב-4-8 פעמים מהאלטרנטיבה</li>
+      <li>מודל עסקי כפול עם פוטנציאל להכנסה חוזרת — בהשראת הצלחת הפאדל</li>
+      <li>נוף תחרותי פרוץ (white space) למי שמשלב הקמה עם בעלות והפעלה</li>
+    </ul>
+    <p style="font-size:1.6rem; margin-top:1em;"><b>בואו נבנה יחד את הדור הבא של מתקני הספורט בישראל</b></p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(-1)">▶</button>
+  <span id="counter">1 / 13</span>
+  <button onclick="go(1)">◀</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    document.getElementById('counter').textContent = (idx + 1) + ' / ' + slides.length;
+  }
+  function go(delta) {
+    idx = Math.min(Math.max(idx + delta, 0), slides.length - 1);
+    render();
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') go(1);
+    if (e.key === 'ArrowRight') go(-1);
+  });
+  render();
+</script>
+</body>
+</html>
