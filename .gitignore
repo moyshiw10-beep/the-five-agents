@@ -1,10 +1,1 @@
 .env
-
-# league-crm (Next.js sub-project)
-league-crm/node_modules
-league-crm/.next
-league-crm/app/generated
-league-crm/.env
-league-crm/.env*.local
-league-crm/*.db
-league-crm/*.db-journal
