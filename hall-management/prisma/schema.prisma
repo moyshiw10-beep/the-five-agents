@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN // מנכ"ל/מנהל מערכת
+  HALL_MANAGER // מנהל אולם
+  ACCOUNTANT // מנהלת חשבונות
+  TEAM // נציג קבוצה / שחקן
+}
+
+enum BookingSource {
+  LOGLIGA // נמשך אוטומטית מלוגליג - משחק ליגה
+  TRAINING // שריון אימון עצמי
+  MANUAL // נוצר ידנית ע"י מנהל
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  phone        String?
+  createdAt    DateTime @default(now())
+
+  // מנהל אולם מנהל אולם אחד או יותר
+  managedHalls Hall[]   @relation("HallManagers")
+
+  // נציג/שחקן שייך לקבוצה אחת (אופציונלי)
+  teamId String?
+  team   Team?   @relation(fields: [teamId], references: [id])
+
+  bookingsCreated TrainingBooking[] @relation("BookingCreatedBy")
+
+  @@index([role])
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  contactEmail String?
+  contactPhone String?
+  createdAt DateTime @default(now())
+
+  members  User[]
+  players  Player[]
+  bookings TrainingBooking[]
+}
+
+model Player {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String?
+  email     String?
+  teamId    String?
+  team      Team?    @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Hall {
+  id            String   @id @default(cuid())
+  name          String
+  address       String?
+  logligaVenueId String? // מזהה האולם כפי שמופיע במערכת לוגליג, לצורך מיפוי שיבוצים
+  reportEmail   String?  // אימייל לשליחת דוח שימוש (אם שונה מהמנהלים המקושרים)
+  createdAt     DateTime @default(now())
+
+  managers User[] @relation("HallManagers")
+  units    HallUnit[]
+
+  @@index([logligaVenueId])
+}
+
+// יחידה בתוך אולם - למשל מגרש שלם / חצי מגרש / זירה
+model HallUnit {
+  id     String @id @default(cuid())
+  hallId String
+  hall   Hall   @relation(fields: [hallId], references: [id], onDelete: Cascade)
+  name   String // לדוגמה: "מגרש 1", "חצי מגרש צפוני"
+
+  leagueBookings   LeagueBooking[]
+  trainingBookings TrainingBooking[]
+
+  @@index([hallId])
+}
+
+// שיבוץ משחק ליגה שנמשך מלוגליג - קובע מתי היחידה תפוסה ולכן לא זמינה לשריון אימון
+model LeagueBooking {
+  id             String   @id @default(cuid())
+  hallUnitId     String
+  hallUnit       HallUnit @relation(fields: [hallUnitId], references: [id], onDelete: Cascade)
+  date           DateTime // תאריך המשחק (חצות מקומי)
+  startTime      String   // "HH:mm"
+  endTime        String   // "HH:mm"
+  homeTeamName   String?
+  awayTeamName   String?
+  competitionName String?
+  logligaGameId  String   @unique // מזהה ייחודי מלוגליג, מונע כפילויות בסנכרון
+  syncedAt       DateTime @default(now())
+
+  @@index([hallUnitId, date])
+}
+
+// שריון של קבוצה/שחקן ליחידה פנויה באולם, ביום שאין בו משחק ליגה על אותה יחידה
+model TrainingBooking {
+  id          String        @id @default(cuid())
+  hallUnitId  String
+  hallUnit    HallUnit      @relation(fields: [hallUnitId], references: [id], onDelete: Cascade)
+  date        DateTime
+  startTime   String
+  endTime     String
+  teamId      String?
+  team        Team?         @relation(fields: [teamId], references: [id])
+  createdById String
+  createdBy   User          @relation("BookingCreatedBy", fields: [createdById], references: [id])
+  status      BookingStatus @default(CONFIRMED)
+  notes       String?
+  source      BookingSource @default(TRAINING)
+  createdAt   DateTime      @default(now())
+
+  @@index([hallUnitId, date])
+}
+
+// לוג הרצות סנכרון מול לוגליג - למעקב ופתרון תקלות
+model LogligaSyncLog {
+  id           String   @id @default(cuid())
+  startedAt    DateTime @default(now())
+  finishedAt   DateTime?
+  success      Boolean  @default(false)
+  gamesFound   Int      @default(0)
+  errorMessage String?
+}
+
+// לוג שליחת דוחות - מונע שליחה כפולה ומאפשר מעקב
+model ReportLog {
+  id        String   @id @default(cuid())
+  type      String   // "HALL_USAGE" | "MONTHLY_ACCOUNTING"
+  periodStart DateTime
+  periodEnd   DateTime
+  hallId    String?
+  recipient String
+  sentAt    DateTime @default(now())
+  success   Boolean  @default(true)
+  errorMessage String?
+
+  @@index([type, periodStart, hallId])
+}
