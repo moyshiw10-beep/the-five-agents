@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["playwright"],
+  serverExternalPackages: ["playwright"],
+  images: {
+    // No remote image hosts are configured. This keeps the image optimizer closed.
+    remotePatterns: [],
   },
 };
 

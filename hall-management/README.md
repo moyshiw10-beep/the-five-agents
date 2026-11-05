@@ -6,7 +6,7 @@
 
 ## סטאק טכנולוגי
 
-- **Next.js 14** (App Router) + TypeScript + Tailwind CSS
+- **Next.js 16** (App Router) + TypeScript + Tailwind CSS
 - **PostgreSQL** + **Prisma** ORM
 - **NextAuth** (Credentials) לניהול משתמשים ותפקידים
 - **Playwright** לחיבור ללוגליג (login-based, אין API ציבורי ידוע)
@@ -30,14 +30,17 @@ npm install
 cp .env.example .env
 # ערכו את .env: DATABASE_URL, NEXTAUTH_SECRET וכו'
 
-npx prisma migrate dev --name init
-npm run prisma:seed   # יוצר משתמשי דמו (ראו פלט הפקודה לפרטי התחברות)
+npx prisma migrate deploy
+SEED_PASSWORD='choose-a-unique-local-password' npm run prisma:seed
 
 npm run dev
 ```
 
-האתר יעלה בכתובת http://localhost:3000. משתמשי הדמו שנוצרים ע"י `prisma:seed`
-מסומנים בפלט הפקודה, כולם עם הסיסמה `password123`.
+האתר יעלה בכתובת http://localhost:3000. `prisma:seed` יוצר משתמשי דמו סינתטיים
+ומשתמש ב-`SEED_PASSWORD` מהסביבה. הפקודה לא מדפיסה את הסיסמה. אין להשתמש בסיסמת
+ברירת מחדל משותפת, ואין לזרוע את המשתמשים האלה בסביבה עם נתונים אמיתיים.
+
+פריסה לכתובת ציבורית מתוארת ב-`DEPLOYMENT.md`. במאגר הזה אין חשבון אירוח מוגדר.
 
 ## חיבור ללוגליג
 

@@ -16,6 +16,9 @@ const bookingSchema = z.object({
 
 export async function createTrainingBooking(formData: FormData) {
   const session = await requireSession();
+  if (session.user.role !== "TEAM" && session.user.role !== "ADMIN" && session.user.role !== "HALL_MANAGER") {
+    throw new Error("אין הרשאה לשריין אימון");
+  }
   const parsed = bookingSchema.parse({
     hallUnitId: formData.get("hallUnitId"),
     date: formData.get("date"),
@@ -26,6 +29,13 @@ export async function createTrainingBooking(formData: FormData) {
 
   if (session.user.role === "TEAM" && !session.user.teamId) {
     throw new Error("המשתמש אינו משויך לקבוצה - לא ניתן לבצע שריון");
+  }
+
+  if (session.user.role === "HALL_MANAGER") {
+    const managedUnit = await prisma.hallUnit.findFirst({
+      where: { id: parsed.hallUnitId, hall: { managers: { some: { id: session.user.id } } } },
+    });
+    if (!managedUnit) throw new Error("אין הרשאה לשריין ביחידה זו");
   }
 
   const date = new Date(`${parsed.date}T00:00:00`);

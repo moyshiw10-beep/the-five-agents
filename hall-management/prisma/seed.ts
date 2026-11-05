@@ -4,7 +4,11 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  const passwordHash = await bcrypt.hash("password123", 10);
+  const seedPassword = process.env.SEED_PASSWORD ?? "";
+  if (seedPassword.length < 12) {
+    throw new Error("SEED_PASSWORD is required and must be at least 12 characters. The value is not printed.");
+  }
+  const passwordHash = await bcrypt.hash(seedPassword, 10);
 
   const admin = await prisma.user.upsert({
     where: { email: "admin@example.com" },
@@ -72,9 +76,8 @@ async function main() {
     },
   });
 
-  console.log("נתוני דמו נוצרו:");
+  console.log("נתוני דמו נוצרו. הסיסמה לא מודפסת.");
   console.log({ admin: admin.email, hallManager: hallManager.email, accountant: accountant.email, teamUser: teamUser.email, hall: hall.name });
-  console.log('סיסמה לכל המשתמשים: "password123"');
 }
 
 main()

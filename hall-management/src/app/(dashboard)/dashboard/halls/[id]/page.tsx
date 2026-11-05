@@ -3,10 +3,11 @@ import { prisma } from "@/lib/prisma";
 import { addHallUnit, removeHallUnit, setHallManagers } from "@/lib/actions/halls";
 import { notFound } from "next/navigation";
 
-export default async function HallDetailPage({ params }: { params: { id: string } }) {
+export default async function HallDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   await requireRole("ADMIN");
   const hall = await prisma.hall.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: { units: true, managers: true },
   });
   if (!hall) notFound();

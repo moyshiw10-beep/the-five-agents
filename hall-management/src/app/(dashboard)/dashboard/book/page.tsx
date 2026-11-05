@@ -22,12 +22,19 @@ const STATUS_CLASS: Record<string, string> = {
 export default async function BookPage({
   searchParams,
 }: {
-  searchParams: { hallId?: string; date?: string };
+  searchParams: Promise<{ hallId?: string; date?: string }>;
 }) {
-  await requireRole("TEAM", "ADMIN", "HALL_MANAGER");
-  const halls = await prisma.hall.findMany({ orderBy: { name: "asc" } });
-  const hallId = searchParams.hallId ?? halls[0]?.id;
-  const date = searchParams.date ?? todayStr();
+  const query = await searchParams;
+  const session = await requireRole("TEAM", "ADMIN", "HALL_MANAGER");
+  const halls = await prisma.hall.findMany({
+    where:
+      session.user.role === "HALL_MANAGER"
+        ? { managers: { some: { id: session.user.id } } }
+        : undefined,
+    orderBy: { name: "asc" },
+  });
+  const hallId = query.hallId ?? halls[0]?.id;
+  const date = query.date ?? todayStr();
 
   const availability = hallId ? await getHallDayAvailability(hallId, new Date(`${date}T00:00:00`)) : [];
 

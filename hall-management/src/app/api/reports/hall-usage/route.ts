@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { isCronAuthorized } from "@/lib/cronAuth";
 import { sendHallUsageReports } from "@/lib/reports";
 
 export async function POST(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  const isCron = authHeader === `Bearer ${process.env.CRON_SECRET}` && !!process.env.CRON_SECRET;
+  const isCron = isCronAuthorized(req.headers.get("authorization"));
 
   if (!isCron) {
     const session = await getServerSession(authOptions);
