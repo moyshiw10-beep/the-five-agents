@@ -127,6 +127,7 @@ model TrainingBooking {
   status      BookingStatus @default(CONFIRMED)
   notes       String?
   source      BookingSource @default(TRAINING)
+  importKey   String?       @unique
   createdAt   DateTime      @default(now())
 
   @@index([hallUnitId, date])

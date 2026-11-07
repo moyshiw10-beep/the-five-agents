@@ -63,7 +63,7 @@ async function main() {
   pass("rate-limit");
 
   const importGate = await evaluateImportRequest();
-  if (importGate.ok !== false || !importGate.reason.includes("No operational source")) {
+  if (importGate.ok !== false || !importGate.reason.includes("IMPORT_SOURCE_PATH")) {
     fail("import-gate", "gate did not refuse");
   }
   pass("import-gate");
