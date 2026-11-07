@@ -26,6 +26,15 @@ PostgreSQL נדרש. `prisma/migrations/20260914181032_init` הוא המיגרצ
 - `SMTP_*` — רק אם שולחים דוחות. בלי זה הדוחות נכשלים בשליחה, והאתר עצמו עולה.
 - `LOGLIGA_USE_MOCK=true` עד שיש אימות סלקטורים וסיסמה אמיתית שנמסרת מחוץ לגיט.
 
+## בדיקת חיים, גיבוי, ושחזור
+
+- `GET /api/health` מחזיר `{ ok: true, db: "up" }` רק אחרי חיבור למסד. אין בגוף התשובה כתובת או סוד.
+- ב-`NODE_ENV=production` התהליך נעצר אם חסרים `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET` (לפחות 32 תווים), או `CRON_SECRET` (לפחות 32 תווים).
+- ניסיונות התחברות כושלים נעצרים אחרי 8 כשלונות לאותה כתובת בתוך 15 דקות, בתהליך ה-Node הנוכחי.
+- גיבוי: `BACKUP_CONFIRM=yes npm run backup:db`. נוצר קובץ `backups/hall-<timestamp>.dump`. התיקייה לא נכנסת לגיט.
+- שחזור אוטומטי חסום. `tsx src/scripts/restore-check.ts backups/<file>.dump` בודק שהארכיון קריא ואז עוצר בלי לשנות נתונים, כולל כשהמסד אינו ריק. אין פקודת `migrate reset` ואין מחיקה.
+- ייבוא: `npm run import:source` נכשל בכוונה. לא זוהה קובץ נתונים תפעולי. הקבצים מהדיון הקודם הם קוד (`hall-management-patch_b517.txt`, `hall-management-source_1dbf.zip`), לא רשומות. אין לאשר ייבוא עד שיועברו שם הקובץ המדויק, sha256, ומיפוי עמודות.
+
 ## צעדים אחרי שיש שרת ומסד
 
 ```bash

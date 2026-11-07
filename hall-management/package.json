@@ -12,6 +12,8 @@
     "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "tsx prisma/seed.ts",
     "verify:synthetic": "tsx src/scripts/verify-synthetic.ts",
+    "backup:db": "tsx src/scripts/backup-db.ts",
+    "import:source": "tsx src/scripts/import-source.ts",
     "logliga:sync": "tsx src/scripts/run-logliga-sync.ts",
     "reports:weekly": "tsx src/scripts/run-weekly-report.ts",
     "reports:monthly": "tsx src/scripts/run-monthly-report.ts"

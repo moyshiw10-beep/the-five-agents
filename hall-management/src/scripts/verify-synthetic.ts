@@ -1,5 +1,7 @@
 import { prisma } from "../lib/prisma";
 import { isUnitSlotFree } from "../lib/availability";
+import { evaluateImportRequest } from "../lib/importGate";
+import { isLoginRateLimited, LOGIN_RATE_LIMIT, recordLoginFailure, resetLoginFailuresForTests } from "../lib/loginRateLimit";
 
 const base = process.env.VERIFY_BASE_URL ?? "http://127.0.0.1:3000";
 
@@ -53,9 +55,29 @@ async function main() {
   const cron = process.env.CRON_SECRET ?? "";
   if (password.length < 12 || cron.length < 12) fail("env", "required test secrets are missing");
 
+  resetLoginFailuresForTests();
+  const probe = "rate-limit-probe@example.com";
+  for (let i = 0; i < LOGIN_RATE_LIMIT.MAX_FAILURES; i += 1) recordLoginFailure(probe);
+  if (!isLoginRateLimited(probe)) fail("rate-limit", "threshold not reached");
+  resetLoginFailuresForTests();
+  pass("rate-limit");
+
+  const importGate = await evaluateImportRequest();
+  if (importGate.ok !== false || !importGate.reason.includes("No operational source")) {
+    fail("import-gate", "gate did not refuse");
+  }
+  pass("import-gate");
+
   const loginPage = await fetch(`${base}/login`);
   if (loginPage.status !== 200) fail("login-page", String(loginPage.status));
   pass("login-page");
+
+  const health = await fetch(`${base}/api/health`);
+  const healthBody = (await health.json()) as { ok?: boolean; db?: string };
+  if (health.status !== 200 || healthBody.ok !== true || healthBody.db !== "up") {
+    fail("health", String(health.status));
+  }
+  pass("health");
 
   const anon = await fetch(`${base}/dashboard`, { redirect: "manual" });
   if (anon.status !== 307 && anon.status !== 302) fail("anon-dashboard", String(anon.status));
